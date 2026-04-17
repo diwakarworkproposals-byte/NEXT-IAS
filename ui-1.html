@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPSC Strategy Session</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0a2a66, #1e4db7);
+  color: white;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ANIMATION */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HERO */
+.hero h1 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.hero p {
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* CARD */
+.card {
+  background: white;
+  color: #222;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* INPUT */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 12px;
+  padding: 14px;
+  width: 100%;
+  background: linear-gradient(45deg, #ff6b00, #ff9a3c);
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* RESULT */
+.result {
+  display: none;
+  margin-top: 15px;
+  background: #eef3ff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* CTA BOX */
+.cta-box {
+  background: linear-gradient(135deg, #ff6b00, #ff9a3c);
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* STICKY CTA */
+.sticky {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ff6b00;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* FLOATING WHATSAPP */
+.whatsapp {
+  position: fixed;
+  bottom: 70px;
+  right: 15px;
+  background: #25D366;
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* BADGE */
+.badge {
+  background: rgba(255,255,255,0.2);
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+   <div style="text-align:center; margin-bottom:20px;">
+  <img src="logo.png" alt="Next IAS Logo" style="max-width:160px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));">
+</div> 
+
+  <!-- HERO -->
+  <div class="hero fade-in">
+    <h1>Not clearing UPSC? Let’s fix it.</h1>
+    <p>Get your personalized UPSC strategy in 10 minutes – FREE</p>
+    <div class="badge">🔥 83+ students analysed this week</div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="card fade-in" style="animation-delay:0.2s;">
+    ✔️ Personalized study plan<br>
+    ✔️ Optional + GS strategy<br>
+    ✔️ Answer writing feedback<br>
+    ✔️ Real exam approach
+  </div>
+
+  <!-- FORM -->
+  <div class="card fade-in" style="animation-delay:0.4s;">
+    <form id="form">
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <select id="attempt" required>
+        <option value="">Select Attempt</option>
+        <option>2026</option>
+        <option>2027</option>
+        <option>Beginner</option>
+      </select>
+
+      <input type="text" id="optional" placeholder="Your Optional Subject">
+
+      <button class="btn">TAKE QUIZ</button>
+    </form>
+
+    <!-- RESULT -->
+    <div class="result" id="result">
+      <strong>Your preparation needs improvement in:</strong>
+      <ul>
+        <li>Time management</li>
+        <li>Answer writing</li>
+        <li>Optional clarity</li>
+      </ul>
+
+      <div class="cta-box">
+        📍 2 min from Parmanand Chowk<br>
+        ⏰ Today 4 PM – 8 PM<br><br>
+        <button class="btn" onclick="goWhatsApp()">Visit Today</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="card fade-in" style="animation-delay:0.6s;">
+    ⭐ Cleared prelims after 2 failures<br>
+    ⭐ Improved answer writing in 1 month
+  </div>
+
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<div class="whatsapp" onclick="goWhatsApp()">
+  Chat Now
+</div>
+
+<!-- STICKY CTA -->
+<div class="sticky" onclick="goWhatsApp()">
+  Book Free Strategy Session
+</div>
+
+<script>
+const quizSets = [
+  [
+    {q:"Amber Box relates to?", options:["SAARC","WTO","UN"], ans:1},
+    {q:"MUDRA Yojana is for?", options:["Farmers","Small business","Students"], ans:1},
+    {q:"Import cover means?", options:["Export ratio","Months of imports","GDP"], ans:1},
+    {q:"UDAY scheme relates to?", options:["DISCOM","Solar","Jobs"], ans:0},
+    {q:"SDR belongs to?", options:["IMF","RBI","World Bank"], ans:0},
+    {q:"Green Box is?", options:["WTO subsidy","Climate","Tax"], ans:0},
+    {q:"Gold Monetization?", options:["Use idle gold","Import gold","Tax"], ans:0},
+    {q:"FR available to?", options:["Only citizens","Some to all","Only govt"], ans:1},
+    {q:"Capital budget?", options:["Salary","Asset","Subsidy"], ans:1},
+    {q:"UPSC tests?", options:["Rote","Concept","Luck"], ans:1}
+  ],
+  [
+    {q:"Fiscal deficit means?", options:["Income gap","Borrowing need","Exports"], ans:1},
+    {q:"Repo rate set by?", options:["Govt","RBI","IMF"], ans:1},
+    {q:"MSP is?", options:["Import price","Min support price","Tax"], ans:1},
+    {q:"FRBM Act relates to?", options:["Budget discipline","Trade","Banking"], ans:0},
+    {q:"NITI Aayog replaced?", options:["Planning Commission","Finance Commission","RBI"], ans:0},
+    {q:"GDP measures?", options:["Production","Happiness","Population"], ans:0},
+    {q:"Blue economy?", options:["Ocean resources","Sky","Land"], ans:0},
+    {q:"Lok Sabha term?", options:["4","5","6"], ans:1},
+    {q:"Zero Hour?", options:["After QH","Before session","End"], ans:0},
+    {q:"Directive Principles?", options:["Justiciable","Non-justiciable","Optional"], ans:1}
+  ],
+  [
+    {q:"Carbon credit?", options:["Tax","Emission permit","Subsidy"], ans:1},
+    {q:"Biodiversity hotspot?", options:["High species","Low rain","Urban"], ans:0},
+    {q:"El Nino?", options:["Cooling","Warming","Storm"], ans:1},
+    {q:"Monsoon driven by?", options:["Pressure","Temp only","Wind only"], ans:0},
+    {q:"Article 32?", options:["Remedy","Tax","Election"], ans:0},
+    {q:"RTI Act?", options:["Info access","Tax","Loan"], ans:0},
+    {q:"Preamble source?", options:["USSR","USA","UK"], ans:1},
+    {q:"Emergency declared by?", options:["PM","President","CJ"], ans:1},
+    {q:"Fundamental Duties?", options:["Rights","Duties","Taxes"], ans:1},
+    {q:"CAG audits?", options:["Govt","Private","NGO"], ans:0}
+  ]
+];
+
+// rotate quiz set
+let setIndex = localStorage.getItem("quizSet") || 0;
+setIndex = (parseInt(setIndex)+1) % quizSets.length;
+localStorage.setItem("quizSet", setIndex);
+
+const quiz = quizSets[setIndex];
+
+let time = 120;
+let timerInterval;
+
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+  startQuiz();
+});
+
+function startQuiz(){
+  const container = document.querySelector(".card");
+  container.innerHTML = `<h3>UPSC Mini Test (2 mins)</h3><p id="timer">Time: 120s</p><form id="quizForm"></form><button class="btn" onclick="submitQuiz()">Submit Test</button>`;
+  
+  const form = document.getElementById("quizForm");
+
+  quiz.forEach((item, i)=>{
+    let qHTML = `<div style="margin-top:10px;"><b>${i+1}. ${item.q}</b><br>`;
+    item.options.forEach((opt,j)=>{
+      qHTML += `<input type="radio" name="q${i}" value="${j}"> ${opt}<br>`;
+    });
+    qHTML += "</div>";
+    form.innerHTML += qHTML;
+  });
+
+  startTimer();
+}
+
+function startTimer(){
+  timerInterval = setInterval(()=>{
+    time--;
+    document.getElementById("timer").innerText = "Time: " + time + "s";
+    if(time<=0){
+      clearInterval(timerInterval);
+      submitQuiz();
+    }
+  },1000);
+}
+
+function submitQuiz(){
+  clearInterval(timerInterval);
+
+  let score = 0;
+
+  quiz.forEach((q,i)=>{
+    let ans = document.querySelector(`input[name="q${i}"]:checked`);
+    if(ans && parseInt(ans.value) === q.ans) score++;
+  });
+
+  let attempt = document.getElementById("attempt").value;
+
+  let feedback = "";
+
+  if(score >=8){
+    feedback = "🔥 Strong preparation. Focus on answer writing to clear mains.";
+  } else if(score >=5){
+    feedback = "⚠️ Decent base but gaps in concepts & revision.";
+  } else {
+    feedback = "❌ Serious gaps. You need structured guidance immediately.";
+  }
+
+  // AI-like personalization
+  if(attempt === "Beginner"){
+    feedback += "<br>👉 Start with NCERT + basic foundation.";
+  } else if(attempt === "2026"){
+    feedback += "<br>👉 Focus on Prelims test series + revision.";
+  } else {
+    feedback += "<br>👉 Time to intensify answer writing & mocks.";
+  }
+
+  document.querySelector(".card").innerHTML = `
+    <h3>Your Score: ${score}/10</h3>
+    <p>${feedback}</p>
+    <div class="cta-box">
+      📍 2 min from Parmanand Chowk<br>
+      ⏰ Visit Today 4–8 PM<br><br>
+      <button class="btn" onclick="goWhatsApp()">Get Full Strategy</button>
+    </div>
+  `;
+}
+
+function goWhatsApp() {
+  let name = document.getElementById("name").value || "Student";
+  let msg = encodeURIComponent("Hi, I completed the UPSC quiz. My name is " + name + ". I want my strategy session.");
+  window.open("https://wa.me/91XXXXXXXXXX?text=" + msg, "_blank");
+}
+</script>
+</body>
+</html>
