@@ -8,6 +8,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
+  .option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-radius: 8px;
+  background: #f7f9ff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option input {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.option label {
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.option:hover {
+  background: #eaf0ff;
+}
+
+/* Selected effect */
+.option input:checked + label {
+  font-weight: 600;
+  color: #1e4db7;
+}
 * {
   margin: 0;
   padding: 0;
@@ -284,10 +317,12 @@ function startQuiz(){
     let qHTML = `<div style="margin-top:10px;"><b>${i+1}. ${item.q}</b><br>`;
     item.options.forEach((opt,j)=>{
       qHTML += `
-<label style="display:flex; align-items:center; gap:10px; margin:6px 0; cursor:pointer;">
-  <input type="radio" name="q${i}" value="${j}" style="transform:scale(1.2);">
-  <span>${opt}</span>
-</label>
+qHTML += `
+<div class="option">
+  <input type="radio" name="q${i}" value="${j}" id="q${i}_${j}">
+  <label for="q${i}_${j}">${opt}</label>
+</div>
+`;
 `;
     });
     qHTML += "</div>";
