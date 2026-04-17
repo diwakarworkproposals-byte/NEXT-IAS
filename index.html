@@ -283,7 +283,12 @@ function startQuiz(){
   quiz.forEach((item, i)=>{
     let qHTML = `<div style="margin-top:10px;"><b>${i+1}. ${item.q}</b><br>`;
     item.options.forEach((opt,j)=>{
-      qHTML += `<input type="radio" name="q${i}" value="${j}"> ${opt}<br>`;
+      qHTML += `
+<label style="display:flex; align-items:center; gap:10px; margin:6px 0; cursor:pointer;">
+  <input type="radio" name="q${i}" value="${j}" style="transform:scale(1.2);">
+  <span>${opt}</span>
+</label>
+`;
     });
     qHTML += "</div>";
     form.innerHTML += qHTML;
